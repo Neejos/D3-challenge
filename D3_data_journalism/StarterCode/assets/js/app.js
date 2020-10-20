@@ -50,7 +50,7 @@ var svgHeight = 1000;
 
 var margin = {
   top: 20,
-  right: 10,
+  right: 0,
   bottom: 100,
   left: 100
 };
@@ -288,6 +288,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
   var povertyLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 20)
+    .classed("axis-text", true)
     // .attr("class","axis-text-x")
     .attr("value", "poverty") // value to grab for event listener
     .classed("active", true)
@@ -297,6 +298,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
   var ageLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 40)
+    .classed("axis-text", true)
     // .attr("class","axis-text-x")
     .attr("value", "age") // value to grab for event listener
     .classed("inactive", true)
@@ -306,6 +308,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
   var incomeLabel = xlabelsGroup.append("text")
     .attr("x", 0)
     .attr("y", 60)
+    .classed("axis-text", true)
     // .attr("class","axis-text-x")
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
@@ -318,7 +321,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
 
 
   var healthcareLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-40,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     // .attr("class","axis-text-y")
     .classed("axis-text", true)
@@ -328,7 +331,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
 
 
   var smokesLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-60,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-80,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .classed("axis-text", true)
     // .attr("class","axis-text-y")
@@ -338,7 +341,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
 
 
   var obesityLabel = ylabelsGroup.append("text")
-    .attr("transform", `translate(-80,${height / 2})rotate(-90)`)
+    .attr("transform", `translate(-100,${height / 2})rotate(-90)`)
     .attr("dy", "1em")
     .classed("axis-text", true)
     // .attr("class","axis-text-y")
@@ -425,12 +428,7 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
         // updates texts with new x values
         textGroup = renderTexts(textGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
       }
-    })
-  //   .catch(function(error) {
-  //     console.log(error);
-  // });
-
-
+       })
     // y axis labels event listener
     ylabelsGroup.selectAll("text")
     .on("click", function() {
@@ -503,11 +501,10 @@ d3.csv("./assets/data/data.csv").then(function(journalismData) {
     // updates texts with new x values
     textGroup = renderTexts(textGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis); 
     
-  });
+  })
 }).catch(function(error) {
   console.log(error);
 });
-
 
 
 
